@@ -28,7 +28,7 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
-    @IBAction func numFunc(sender: UIButton) {
+    @IBAction func numFunc(_ sender: UIButton) {
         if (operatorJustPressed == false) {
             if (resultLabel.text! != "0") {
                 resultLabel.text! += sender.currentTitle!;
@@ -44,7 +44,7 @@ class ViewController: UIViewController {
         print("Button " + sender.currentTitle! + " pressed");
     }
 
-    @IBAction func otherFunc(sender: UIButton) {
+    @IBAction func otherFunc(_ sender: UIButton) {
         if (sender.currentTitle! == "AC") {
             resultLabel.text = "0";
             firstOperand = "0";
@@ -56,15 +56,15 @@ class ViewController: UIViewController {
             operatorJustPressed = true;
             if (resultLabel.text != "0") {
                 if (resultLabel.text!.characters.first != "-") {
-                    resultLabel.text!.insert("-", atIndex: resultLabel.text!.startIndex);
+                    resultLabel.text!.insert("-", at: resultLabel.text!.startIndex);
                 }
                 else {
-                    resultLabel.text!.removeAtIndex(resultLabel.text!.startIndex);
+                    resultLabel.text!.remove(at: resultLabel.text!.startIndex);
                 }
             }
         }
     }
-    @IBAction func operandFunc(sender: UIButton) {
+    @IBAction func operandFunc(_ sender: UIButton) {
         switch currentOperator {
         case "+":
             intResult = Float(firstOperand)! + Float(resultLabel.text!)!;
@@ -85,9 +85,9 @@ class ViewController: UIViewController {
                 intResult = 0;
                 resultLabel.text! = "0";
                 currentOperator = "";
-                let alertController = UIAlertController(title: "", message: "You can't divide by 0", preferredStyle: UIAlertControllerStyle.Alert)
-                alertController.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil))
-                self.presentViewController(alertController, animated: true, completion: nil)
+                let alertController = UIAlertController(title: "", message: "You can't divide by 0", preferredStyle: UIAlertControllerStyle.alert)
+                alertController.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
+                self.present(alertController, animated: true, completion: nil)
             }
             else if (firstOperand == "0") {
                 intResult = 0;
@@ -110,9 +110,9 @@ class ViewController: UIViewController {
         if (resultLabel.text! == "inf") {
             print("inf");
             resultLabel.text! = "0";
-            let alertController = UIAlertController(title: "", message: "Not a number !", preferredStyle: UIAlertControllerStyle.Alert)
-            alertController.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil))
-            self.presentViewController(alertController, animated: true, completion: nil)
+            let alertController = UIAlertController(title: "", message: "Not a number !", preferredStyle: UIAlertControllerStyle.alert)
+            alertController.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
+            self.present(alertController, animated: true, completion: nil)
         }
         print("Button " + sender.currentTitle! + " pressed");
     }
